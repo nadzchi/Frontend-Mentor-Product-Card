@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Product preview card component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet"> 
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    *{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      background-color: hsl(30, 38%, 92%);
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gray-text{
+      color: #bebebe;
+    }
+
+    .green-text{
+      color: #3d8168;
+    }
+    .green-bg{
+      background-color: #3d8168;
+    }
+
+    .text-line-through{
+      text-decoration: line-through;
+    }
+
+    /* Content Styling Desktop */
+    .content-wrapper{
+      background-color: white;
+      width: 35%;
+      max-width: 90%;
+      height: 375px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .item-image{
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .item-image .item-image-desktop{
+      height: 100%;
+      width: 100%;
+      border-radius: 8px 0 0 8px;
+      transition: all 0.4s ease-in;
+    }
+
+    .item-image:hover .item-image-desktop{
+      transform: scale(1.25);
+      border-radius: 8px 0 0 8px;
+    }
+    
+    .item-content{
+      width: 50%;
+      height: 100%;
+      padding: 25px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }    
+
+    .item-content .item-category{
+      text-transform: uppercase;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .item-content .item-name{
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+    }
+
+    .item-content .item-description{
+      font-weight: 700;
+    }    
+
+    .item-content .item-price{
+      display: flex;
+      align-items: center;
+    }
+
+    .item-content .item-price-new{
+      font-family: 'Fraunces', serif;
+      font-size: 1.9rem;
+      margin-right: 15px;
+    }
+
+    .item-content .item-price-old{
+      font-size: .75rem;
+    }
+
+    .item-content .button{
+      padding: 15px;
+      font-size: .8rem;
+      border-radius: 8px;
+      text-align: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease-in;
+    }
+
+    .item-content .button:hover{
+      transform: scale(1.05);
+    }
+
+    .button > svg{
+      margin-right: 5px;
+    }
+
+    img.item-image-mobile{
+      display: none;
+      transition: all 0.4s ease-in;
+    }
+    .item-image:hover .item-image-mobile{
+      transform: scale(1.25);
+      border-radius: 8px 0 0 8px;
+    }
+
+    /* Other screens */
+
+    @media screen and (max-width: 1275px) {
+      .content-wrapper{
+        width: 50%;
+      }
+    }
+
+    @media screen and (max-width: 889px) {
+      .content-wrapper{
+        width: 60%;
+      }
+    }
+
+    @media screen and (max-width: 745px) {
+      .content-wrapper{
+        width: 80%;
+      }
+    }
+
+
+    @media screen and (max-width: 595px) {
+      img.item-image-desktop{
+      display: none;
+    }
+    img.item-image-mobile{
+      display: block;
+    }
+
+    .content-wrapper{
+      width: 65%;
+      height: 80%;
+      flex-direction: column;
+    }
+    .item-image{
+      width: 100%;
+      height: 50%;
+    }
+    .item-image .item-image-mobile{
+      height: 100%;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .item-content{
+      width: 100%;
+      height: 100%;
+    }
+    }
+
+    /* Content Styling Mobile */
+
+    @media screen and (max-width: 375px) {
+      img.item-image-desktop{
+      display: none;
+    }
+    img.item-image-mobile{
+      display: block;
+    }
+
+    .content-wrapper{
+      width: 90%;
+      height: 85%;
+      flex-direction: column;
+    }
+
+    .item-image{
+      width: 100%;
+      height: 50%;
+    }
+
+    .item-image .item-image-mobile{
+      height: 100%;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .item-content{
+      width: 100%;
+      height: 100%;
+    }
+  }
+    
+    
+
+  </style>
+  
+</head>
+<body>
+  <div class="content-wrapper">
+
+    <div class="item-image">
+      <img class="item-image-desktop" src="/images/image-product-desktop.jpg" alt="">
+      <img class="item-image-mobile" src="/images/image-product-mobile.jpg" alt="">
+    </div>
+
+    <div class="item-content">
+      
+      <p class="item-category gray-text">Perfume</p>
+    
+      <h2 class="item-name">Gabrielle Essence Eau De Parfum</h2>
+    
+      <p class="item-description gray-text">A floral, solar and voluptuous interpretation composed by Olivier Polge, 
+      Perfumer-Creator for the House of CHANEL.</p>
+    
+      <p class="item-price"><span class="item-price-new green-text">$149.99</span> <span class="item-price-old text-line-through gray-text">$169.99</span></p>
+    
+      <a class="button green-bg" href="#"><svg width="15" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M14.383 10.388a2.397 2.397 0 0 0-1.518-2.222l1.494-5.593a.8.8 0 0 0-.144-.695.8.8 0 0 0-.631-.28H2.637L2.373.591A.8.8 0 0 0 1.598 0H0v1.598h.983l1.982 7.4a.8.8 0 0 0 .799.59h8.222a.8.8 0 0 1 0 1.599H1.598a.8.8 0 1 0 0 1.598h.943a2.397 2.397 0 1 0 4.507 0h1.885a2.397 2.397 0 1 0 4.331-.376 2.397 2.397 0 0 0 1.12-2.021ZM11.26 7.99H4.395L3.068 3.196h9.477L11.26 7.991Zm-6.465 6.392a.8.8 0 1 1 0-1.598.8.8 0 0 1 0 1.598Zm6.393 0a.8.8 0 1 1 0-1.598.8.8 0 0 1 0 1.598Z" fill="#FFF"/></svg> Add to Cart</a>
+
+    </div>
+
+    
+  </div>
+
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
